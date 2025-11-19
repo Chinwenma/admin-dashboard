@@ -2,9 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Sidebar from "@/components/ui/patient-sidebar";
-import Header from "@/components/ui/patient-header";
-import UserNav from "@/components/ui/patient-nav";
+
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -58,13 +56,7 @@ export default function PatientManagementPage() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-950">
-      {/* Sidebar */}
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-      {/* Main content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <Header setSidebarOpen={setSidebarOpen} />
+ 
 
         <main className="flex-1 mb-25 overflow-y-auto px-6 py-6 space-y-8">
           {/* Page Heading */}
@@ -186,45 +178,5 @@ export default function PatientManagementPage() {
           </motion.div>
         </main>
 
-        {/* Mobile Bottom Navigation */}
-        <UserNav />
-      </div>
-
-      {/* View Patient Dialog */}
-      <Dialog open={viewOpen} onOpenChange={setViewOpen}>
-        <DialogContent className="dark:bg-black">
-          <DialogHeader>
-            <DialogTitle className="text-gray-900 dark:text-gray-100">
-              Patient Details
-            </DialogTitle>
-          </DialogHeader>
-          {selectedPatient && (
-            <div className="space-y-3 text-gray-800 dark:text-gray-200">
-              <p>
-                <strong>Name:</strong> {selectedPatient.name}
-              </p>
-              <p>
-                <strong>Age:</strong> {selectedPatient.age}
-              </p>
-              <p>
-                <strong>Gender:</strong> {selectedPatient.gender}
-              </p>
-              <p>
-                <strong>Ailment:</strong> {selectedPatient.ailment}
-              </p>
-            </div>
-          )}
-          <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => setViewOpen(false)}
-              className="w-full"
-            >
-              Close
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </div>
   );
 }

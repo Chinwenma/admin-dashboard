@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Sidebar from "@/components/ui/doctor-sidebar";
-import Header from "@/components/ui/doctor-header";
-import UserNav from "@/components/ui/doctor-nav";
+
 import {
   Card,
   CardHeader,
@@ -44,13 +42,7 @@ export default function AddNewDoctorPage() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-950">
-      {/* Sidebar */}
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <Header setSidebarOpen={setSidebarOpen} />
+  
 
         <main className="flex-1 mb-20 overflow-y-auto px-6 py-6 space-y-8">
           {/* Page Title */}
@@ -194,23 +186,6 @@ export default function AddNewDoctorPage() {
 
                 <CardFooter className="flex justify-end space-x-4">
                   <Button
-                    type="button"
-                    variant="outline"
-                    className="border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                    onClick={() =>
-                      setFormData({
-                        fullName: "",
-                        email: "",
-                        specialty: "",
-                        phone: "",
-                        licenseNumber: "",
-                        hospital: "",
-                      })
-                    }
-                  >
-                    Reset
-                  </Button>
-                  <Button
                     type="submit"
                     className="bg-black text-white dark:bg-white dark:text-black hover:opacity-80"
                   >
@@ -222,9 +197,5 @@ export default function AddNewDoctorPage() {
           </motion.div>
         </main>
 
-        {/* Mobile Bottom Navigation */}
-        <UserNav />
-      </div>
-    </div>
   );
 }

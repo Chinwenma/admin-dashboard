@@ -104,14 +104,8 @@ export default function DoctorManagementPage() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-950">
-      {/* Sidebar */}
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <Header setSidebarOpen={setSidebarOpen} />
-
+   
+<div>
         <main className="flex-1 mb-20 overflow-y-auto px-6 py-6 space-y-8">
           {/* Page Header */}
           <div className="flex items-center justify-between">
@@ -281,9 +275,6 @@ export default function DoctorManagementPage() {
           </DialogContent>
         </Dialog>
 
-        {/* Mobile Bottom Navigation */}
-        <UserNav />
       </div>
-    </div>
   );
 }

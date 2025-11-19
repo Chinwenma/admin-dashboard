@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css"; 
 import ClientSideBar from "@/components/client/ClientSideBar";
 import Nav from "@/components/client/Header";
+import UserNav from "@/components/ui/doctor-nav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,7 +50,7 @@ export default function DashboardLayout({
               {children}
             </div>
           </main>
-
+<UserNav/>
         </div>
       </body>
     </html>

@@ -14,38 +14,53 @@ import {
   Stethoscope,
   X,
 } from "lucide-react";
-
 interface SidebarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
 }
 
-export default function AdminSidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
+export default function AdminSidebar({
+  sidebarOpen,
+  setSidebarOpen,
+}: SidebarProps) {
   const pathname = usePathname();
-  const router = useRouter();
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   const basePath = "/dashboard";
 
   const sidebarItems = [
-    { name: "Dashboard", icon: Home, href: `${basePath}/dashboard` },
-    { name: "Add Doctor", icon: UserPlus, href: `${basePath}/doctors/add-new-doc` },
-    { name: "Schedules", icon: CalendarDays, href: `${basePath}/schedules` },
-    // { name: "Metrics", icon: BarChart3, href: `${basePath}/matrics` },
-    { name: "Settings", icon: Settings, href: `${basePath}/setting` },
-    { name: "Edit Doctor", icon: Pen, href: `${basePath}/edit-doctor` },
-    { name: "Doctor Management", icon: Users, href: `${basePath}/doc-management` },
-    { name: "Switch to Patient", icon: Users, href: "/for-patient/dashboard" },
+    { name: "Dashboard", icon: Home, href: `${basePath}` },
+    {
+      name: "Doctor Management",
+      icon: Users,
+      href: `${basePath}/doctors`,
+    },
+    {
+      name: "Patient Management",
+      icon: Users,
+      href: `${basePath}/patients`,
+    },
+    {
+      name: "Appointments",
+      icon: Users,
+      href: `${basePath}/appointments`,
+    },
+    {
+      name: "Departments",
+      icon: Users,
+      href: `${basePath}/departments`,
+    },
   ];
 
   const isActive = (href: string) =>
     pathname === href || pathname?.startsWith(`${href}/`);
 
-  const handleLogout = () => {
-    setShowLogoutConfirm(false);
-    router.push("/auth/login");
+  
+  const user = {
+    name: "John Doe",
+    email: "johndoe@email.com",
   };
 
+  const firstLetter = user.name.charAt(0).toUpperCase();
   return (
     <>
       {/* Background overlay for mobile */}
@@ -71,7 +86,7 @@ export default function AdminSidebar({ sidebarOpen, setSidebarOpen }: SidebarPro
           <div className="flex items-center gap-2">
             <Stethoscope className="w-6 h-6 text-gray-700 dark:text-gray-200" />
             <span className="font-semibold text-gray-900 dark:text-gray-100 text-lg tracking-wide">
-             Admin
+              Admin
             </span>
           </div>
           <button
@@ -88,7 +103,7 @@ export default function AdminSidebar({ sidebarOpen, setSidebarOpen }: SidebarPro
             <Link
               key={name}
               href={href}
-              className={`flex items-center px-3 py-2 rounded-md transition-all duration-150 ${
+              className={`flex items-center px-3 py-6 rounded-md transition-all duration-150 ${
                 isActive(href)
                   ? "bg-gray-100 dark:bg-gray-900 text-black dark:text-white font-medium"
                   : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-black dark:hover:text-white"
@@ -99,43 +114,29 @@ export default function AdminSidebar({ sidebarOpen, setSidebarOpen }: SidebarPro
             </Link>
           ))}
 
-          {/* Logout Button */}
-          <button
-            onClick={() => setShowLogoutConfirm(true)}
-            className="flex items-center w-full px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-black dark:hover:text-white transition-all duration-150 rounded-md"
-          >
-            <LogOut className="w-5 h-5 mr-2" /> Logout
-          </button>
+      
         </nav>
-      </aside>
 
-      {/* Logout Confirmation Modal */}
-      {showLogoutConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-lg shadow-xl w-80 p-6 text-center">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-              Confirm Logout
-            </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-              Are you sure you want to log out of your account?
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <button
-                onClick={() => setShowLogoutConfirm(false)}
-                className="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-700 transition"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleLogout}
-                className="px-4 py-2 rounded-md bg-gray-900 dark:bg-gray-100 text-white dark:text-black hover:opacity-80 transition"
-              >
-                Logout
-              </button>
+        <div className="hidden lg:flex border-t border-gray-300 dark:border-gray-800 px-4 py-4 items-center justify-between">
+          {/* Avatar */}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-semibold text-lg">
+              {firstLetter}
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                {user.name}
+              </p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">
+                {user.email}
+              </p>
             </div>
           </div>
+          <button className="text-sm text-red-600 dark:text-red-400 hover:underline flex items-center gap-1">
+            <LogOut className="w-4 h-4" />
+          </button>
         </div>
-      )}
+      </aside>
     </>
   );
 }
