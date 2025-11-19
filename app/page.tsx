@@ -29,7 +29,7 @@ export default function Home() {
 
     // Simulate redirect
     setTimeout(() => {
-      router.push("/dashboard")
+      router.push("/admin")
     }, 1200)
 
     setLoading(false)

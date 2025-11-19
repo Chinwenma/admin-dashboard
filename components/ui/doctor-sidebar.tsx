@@ -25,7 +25,7 @@ export default function AdminSidebar({
 }: SidebarProps) {
   const pathname = usePathname();
 
-  const basePath = "/dashboard";
+  const basePath = "/admin";
 
   const sidebarItems = [
     { name: "Dashboard", icon: Home, href: `${basePath}` },
