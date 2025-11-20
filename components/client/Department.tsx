@@ -10,12 +10,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
 import Link from "next/link";
+import ConfirmDelete from "./ConfirmDelete";
 
 interface Department {
   id: number;
   name: string;
+  slug: string;
   image: string | null;
   description: string | null;
 }
@@ -76,13 +78,20 @@ export default function DepartmentTable({
               <TableCell>{dept.description || "No description"}</TableCell>
 
               <TableCell className="text-right space-x-2">
-                <Button size="sm" variant="ghost">
-                  <Pencil className="w-4 h-4 text-green-500" />
-                </Button>
+                <Link href={`/admin/departments/${dept.slug}/edit`}>
+                  <Button size="sm" variant="ghost">
+                    <Pencil className="w-4 h-4 text-green-500" />
+                  </Button>
+                </Link>
+                {/* <Trash2 className="w-4 h-4" /> */}
 
-                <Button size="sm" variant="ghost" className="text-red-600">
-                  <Trash2 className="w-4 h-4" />
-                </Button>
+                <ConfirmDelete
+                  title="Delete announcement"
+                  message={`This will permanently delete “${dept.name}.`}
+                  busyText="Deleting..."
+                  id={dept.slug}
+                  module="department"
+                ></ConfirmDelete>
               </TableCell>
             </TableRow>
           ))}

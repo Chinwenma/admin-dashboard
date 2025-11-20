@@ -215,7 +215,7 @@ export default function AddNewDepartmentPage() {
                   authenticator={getImageAuth}
                 >
                   <IKUpload
-                    folder="/matrix-hospital/departments"
+                    folder="/matrix-hospital/departments/images"
                     onSuccess={onImageUploadSuccess}
                     onUploadStart={onImageUploadStart}
                     onError={onImageUploadError}

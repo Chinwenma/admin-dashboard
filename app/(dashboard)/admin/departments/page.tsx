@@ -1,4 +1,5 @@
 // app/admin/departments/page.tsx (SERVER COMPONENT)
+export const dynamic = "force-dynamic";
 
 import DepartmentTable from "@/components/client/Department";
 import prisma from "@/lib/prisma";
