@@ -99,7 +99,7 @@ export default function DoctorManagementPage() {
                 <TableBody>
                   {doctors.map((doctor) => (
                     <TableRow
-                      key={doctor.id}
+                      key={doctor.name}
                       className="border-gray-200 dark:border-gray-800 hover:bg-gray-100/50 dark:hover:bg-gray-900/50"
                     >
                       <TableCell className="font-medium text-gray-900 dark:text-gray-100">
@@ -126,7 +126,7 @@ export default function DoctorManagementPage() {
                           <Eye className="h-4 w-4" />
                         </Button>
                         {/* Edit Doctor */}
-                        <Link href={`/admin/doctors/edit/${doctor.id}`}>
+                        <Link href={`/admin/doctors/edit/${doctor.name}`}>
                           <Button
                             size="sm"
                             variant="ghost"
