@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, ChevronDown, LogOut, User, Settings, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface HeaderProps {
   setSidebarOpen: (open: boolean) => void;
@@ -28,13 +29,13 @@ export default function AdminHeader({ setSidebarOpen }: HeaderProps) {
   const userInitial = firstName.charAt(0).toUpperCase();
 
   // Load saved theme on mount
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedTheme = localStorage.getItem("theme");
+  //   if (savedTheme === "dark") {
+  //     setDarkMode(true);
+  //     document.documentElement.classList.add("dark");
+  //   }
+  // }, []);
 
   const toggleTheme = () => {
     const newTheme = darkMode ? "light" : "dark";
@@ -97,7 +98,7 @@ export default function AdminHeader({ setSidebarOpen }: HeaderProps) {
               className="flex items-center space-x-2 focus:outline-none cursor-pointer"
             >
               {avatar ? (
-                <img
+                <Image
                   src={avatar}
                   alt="Admin avatar"
                   className="w-9 h-9 rounded-full object-cover"

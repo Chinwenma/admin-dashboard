@@ -1,11 +1,12 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React, { useState, FormEvent, ChangeEvent, useEffect } from "react";
 import { IKUpload, ImageKitProvider } from "imagekitio-next";
 import { toast, ToastContainer } from "react-toastify";
 import Image from "next/image";
 import slugifyWithUniqueSuffix from "@/lib/slugify";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 import {
   Card,
@@ -43,7 +44,7 @@ export default function AddNewDepartmentPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isImageUploading, setIsImageUploading] = useState(false);
   const [errors, setErrors] = useState<Partial<DepartmentFormData>>({});
-  const router = useRouter();
+  // const router = useRouter();
 
   // Auto-generate slug with unique suffix
   useEffect(() => {

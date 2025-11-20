@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import {
   LayoutGrid,
   UserPlus,
-  Edit,
+  // Edit,
   Calendar,
   Users,
-  LogOut,
+  // LogOut,
 } from "lucide-react";
 
 export default function UserNav() {

@@ -19,8 +19,8 @@ import {
   Settings,
   Bell,
   User,
-  Mail,
-  Phone,
+  // Mail,
+  // Phone,
   Lock,
   Save,
 } from "lucide-react";

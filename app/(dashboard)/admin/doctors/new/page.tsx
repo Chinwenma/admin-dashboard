@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 import { Stethoscope } from "lucide-react";
 
 export default function AddNewDoctorPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",

@@ -13,13 +13,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
+// import {
+//   Dialog,
+//   DialogContent,
+//   DialogHeader,
+//   DialogTitle,
+//   DialogFooter,
+// } from "@/components/ui/dialog";
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -34,9 +34,9 @@ import { Eye, Edit, Trash2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function PatientManagementPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [selectedPatient, setSelectedPatient] = useState<any>(null);
-  const [viewOpen, setViewOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [selectedPatient, setSelectedPatient] = useState<any>(null);
+  // const [viewOpen, setViewOpen] = useState(false);
 
   // Mock patient data
   const [patients, setPatients] = useState([
@@ -46,10 +46,10 @@ export default function PatientManagementPage() {
     { id: 4, name: "Olivia Brown", age: 37, gender: "Female", ailment: "Allergy" },
   ]);
 
-  const handleView = (patient: any) => {
-    setSelectedPatient(patient);
-    setViewOpen(true);
-  };
+  // const handleView = (patient: any) => {
+  //   setSelectedPatient(patient);
+  //   setViewOpen(true);
+  // };
 
   const handleDelete = (id: number) => {
     setPatients(patients.filter((p) => p.id !== id));
@@ -125,7 +125,7 @@ export default function PatientManagementPage() {
                           <Button
                             size="sm"
                             variant="ghost"
-                            onClick={() => handleView(patient)}
+                            // onClick={() => handleView(patient)}
                           >
                             <Eye className="h-4 w-4 text-blue-500" />
                           </Button>

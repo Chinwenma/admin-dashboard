@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import Sidebar from "@/components/ui/doctor-sidebar";
-import Header from "@/components/ui/doctor-header";
+// import Sidebar from "@/components/ui/doctor-sidebar";
+// import Header from "@/components/ui/doctor-header";
 import UserNav from "@/components/ui/doctor-nav";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Stethoscope, Users, CalendarDays, Activity } from "lucide-react";
 
 export default function DoctorDashboardPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Mock stats data
   const stats = [

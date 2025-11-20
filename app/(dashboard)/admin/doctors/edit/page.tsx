@@ -69,7 +69,7 @@ export default function EditPatientPage() {
             <Card className="max-w-2xl mx-auto bg-white dark:bg-black border border-gray-200 dark:border-gray-800">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  Update Doctor's Information
+                  Update Doctors Information
                 </CardTitle>
               </CardHeader>
 

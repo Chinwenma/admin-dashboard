@@ -12,35 +12,35 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
+// import {
+//   Dialog,
+//   DialogContent,
+//   DialogHeader,
+//   DialogTitle,
+//   DialogDescription,
+// } from "@/components/ui/dialog";
 
 import { motion } from "framer-motion";
 import {
   Eye,
   Pencil,
   Trash2,
-  User,
-  Stethoscope,
-  Mail,
-  Phone,
-  Hospital,
+  // User,
+  // Stethoscope,
+  // Mail,
+  // Phone,
+  // Hospital,
 } from "lucide-react";
 import { doctors } from "@/lib/doctors";
 
-interface Doctor {
-  id: number;
-  name: string;
-  department: string;
-  email: string;
-  phone: string;
-  hospital: string;
-}
+// interface Doctor {
+//   id: number;
+//   name: string;
+//   department: string;
+//   email: string;
+//   phone: string;
+//   hospital: string;
+// }
 
 export default function DoctorManagementPage() {
  

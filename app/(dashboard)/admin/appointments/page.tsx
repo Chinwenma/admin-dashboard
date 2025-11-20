@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import Sidebar from "@/components/ui/patient-sidebar";
-import Header from "@/components/ui/patient-header";
-import UserNav from "@/components/ui/patient-nav";
+// import React, { useState } from "react";
+// import Sidebar from "@/components/ui/patient-sidebar";
+// import Header from "@/components/ui/patient-header";
+// import UserNav from "@/components/ui/patient-nav";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,7 +19,7 @@ import { motion } from "framer-motion";
 import { CalendarDays, CheckCircle2, Clock, XCircle } from "lucide-react";
 
 export default function PatientAppointmentsPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Mock appointments data
   const appointments = [

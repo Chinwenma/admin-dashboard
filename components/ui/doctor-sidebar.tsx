@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname,} from "next/navigation";
 import {
   Home,
-  UserPlus,
+  // UserPlus,
   Users,
-  CalendarDays,
-  Settings,
+  // CalendarDays,
+  // Settings,
   LogOut,
-  Pen,
+  // Pen,
   Stethoscope,
   X,
 } from "lucide-react";
