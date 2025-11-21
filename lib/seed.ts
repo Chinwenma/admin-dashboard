@@ -158,7 +158,6 @@ async function main() {
         image: doc.image,
         email: doc.email,
         phone: doc.phone,
-        hospital: doc.hospital,
         departmentId: department.id,
       },
     });

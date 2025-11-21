@@ -1,23 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Upload } from "lucide-react";
 import { updateDoctorAction } from "../../../actions/update";
+// import { isObjectId } from "@/lib/slugify";
 
-export default async function EditDoctorForm({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
-
-  // Fetch doctor by slug
-  const doctor = await prisma.doctor.findUnique({
-    where: { slug: slug },
+type Props = { params: Promise<{ id: string }> };
+export default async function EditDoctorPage({ params }: Props) {
+  const { id: slug } = await params;
+  if (!slug) return notFound();
+  // const where = isObjectId(slug) ? { id: slug } : { slug };
+   const doctor = await prisma.doctor.findUnique({
+    where: { slug: (await params).id },
   });
-
   if (!doctor) return notFound();
 
   const departments = await prisma.department.findMany();
