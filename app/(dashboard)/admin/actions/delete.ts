@@ -19,3 +19,16 @@ export async function deleteDepartment(slug: string) {
 
   // revalidatePath("/");
 }
+
+
+export async function deleteDoctor(slug: string) {
+  if (!slug) return;
+
+  try {
+    await prisma.doctor.delete({ where: {slug} });
+  } catch (e: any) {
+    if (!isRecordNotFound(e)) throw e;
+  }
+  revalidatePath("/admin/doctors");
+
+}

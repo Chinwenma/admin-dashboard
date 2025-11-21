@@ -3,10 +3,8 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-// import { isObjectId } from "@/lib/slugify";
 import ImageKit from "imagekit";
 import prisma from "@/lib/prisma";
-// import { isObjectId } from "@/lib/slugify";
 
 const imagekit = new ImageKit({
   publicKey: process.env.NEXT_PUBLIC_KEY ?? "",
@@ -85,3 +83,60 @@ export async function updateDepartmentAction(
 //   revalidatePath("/");
   redirect("/admin/departments");
 }
+
+
+export async function updateDoctorAction(slugOrId: string, formData: FormData) {
+  const name = String(formData.get("name") || "").trim();
+  const slug = String(formData.get("slug") || "").trim();
+  const email = String(formData.get("email") || "").trim();
+  const phone = String(formData.get("phone") || "").trim();
+  const departmentId = Number(formData.get("departmentId") || 0);
+
+  if (!name || !slug || !email || !phone || !departmentId) {
+    throw new Error("All fields are required");
+  }
+
+  // Determine if slugOrId is numeric (id) or text (slug)
+  const isId = !isNaN(Number(slugOrId));
+  const where = isId ? { id: Number(slugOrId) } : { slug: slugOrId };
+
+  const existingDoctor = await prisma.doctor.findUnique({ where });
+  if (!existingDoctor) throw new Error("Doctor not found");
+
+  // If slug changed, ensure unique
+  if (slug !== existingDoctor.slug) {
+    const slugExists = await prisma.doctor.findUnique({ where: { slug } });
+    if (slugExists) throw new Error("Slug already exists");
+  }
+
+  // Process Image Upload
+  let imageUrl = existingDoctor.image;
+  const imageFile = formData.get("image");
+
+  if (imageFile instanceof File && imageFile.size > 0) {
+    const buffer = Buffer.from(await imageFile.arrayBuffer());
+    const uploadResponse = await imagekit.upload({
+      file: buffer,
+      fileName: `doctor-${slug}-${Date.now()}.${imageFile.name.split(".").pop()}`,
+      folder: "/matrix-hospital/doctor/images",
+    });
+    imageUrl = uploadResponse.url;
+  }
+
+  // Update Database
+  await prisma.doctor.update({
+    where,
+    data: {
+      name,
+      slug,
+      email,
+      phone,
+      departmentId,
+      image: imageUrl,
+    },
+  });
+
+  revalidatePath("/admin/doctors");  // correct path
+  redirect("/admin/doctors");
+}
+

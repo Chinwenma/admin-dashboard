@@ -122,12 +122,7 @@ export default function AddNewDepartmentPage() {
     setIsImageUploading(false);
   };
 
-  // Optional: dummy authenticator
-  // const getImageAuth = () => ({
-  //   token: "",
-  //   expire: 0,
-  //   signature: "",
-  // });
+  
 
   const canSave =
     !isSubmitting &&

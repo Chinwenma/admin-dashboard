@@ -31,7 +31,6 @@ model Doctor {
   image        String
   email        String      @unique
   phone        String
-  hospital     String
 
   departmentId Int
   department   Department  @relation(fields: [departmentId], references: [id])
