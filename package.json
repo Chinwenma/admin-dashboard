@@ -11,10 +11,10 @@
     "prisma:push": "prisma db push --schema prisma/schema.prisma",
     "prisma:studio": "prisma studio",
     "postinstall": "prisma generate",
-    "seed": "node --loader ts-node/esm lib/seed.ts"
+  "seed": "node --loader ts-node/esm lib/seed.ts"
   },
   "prisma": {
-    "seed": "node --loader ts-node/esm lib/seed.ts"
+  "seed": "node --loader ts-node/esm lib/seed.ts"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.15",
