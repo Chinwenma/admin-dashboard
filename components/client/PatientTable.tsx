@@ -10,18 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogFooter,
-  AlertDialogAction,
-  AlertDialogCancel,
-} from "@/components/ui/alert-dialog";
 import Link from "next/link";
-import { Edit, Trash2 } from "lucide-react";
+import { Edit } from "lucide-react";
 import ConfirmDelete from "./ConfirmDelete";
 
 interface Patient {
@@ -40,10 +30,6 @@ interface Props {
 }
 
 export default function PatientTableClient({ patients }: Props) {
-  const handleDelete = (id: number) => {
-    // TODO: call API or server action to delete
-    console.log("Delete patient", id);
-  };
 
   return (
     <Table>
