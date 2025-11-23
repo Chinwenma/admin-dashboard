@@ -30,7 +30,7 @@ export default function EditDepartmentForm({
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <Link
-            href="/dashboard/admin/departments"
+            href="/admin/departments"
             className="flex items-center text-gray-700 hover:text-gray-900"
           >
             <ArrowLeft size={18} className="mr-2" />

@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import Link from "next/link";
 import { Edit, Trash2 } from "lucide-react";
+import ConfirmDelete from "./ConfirmDelete";
 
 interface Patient {
   id: number;
@@ -68,29 +69,13 @@ export default function PatientTableClient({ patients }: Props) {
                   <Edit className="h-4 w-4 text-green-500" />
                 </Button>
               </Link>
-
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button size="sm" variant="ghost">
-                    <Trash2 className="h-4 w-4 text-red-500" />
-                  </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Delete Patient</AlertDialogTitle>
-                  </AlertDialogHeader>
-                  <p>Are you sure you want to delete {patient.name}?</p>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      onClick={() => handleDelete(patient.id)}
-                      className="bg-red-600 text-white hover:bg-red-700"
-                    >
-                      Delete
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
+  <ConfirmDelete
+                  title="Delete patient"
+                  message={`This will permanently delete ${patient.name}.`}
+                  busyText="Deleting..."
+                  id={patient.slug}
+                  module="patient"
+                ></ConfirmDelete>
             </TableCell>
           </TableRow>
         ))}

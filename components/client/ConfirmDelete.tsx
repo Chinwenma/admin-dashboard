@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Trash2 } from "lucide-react";
-import { deleteDepartment, deleteDoctor } from "@/app/(dashboard)/admin/actions/delete";
+import { deleteDepartment, deleteDoctor, deletePatient } from "@/app/(dashboard)/admin/actions/delete";
 
 type Props = {
   title?: string;
@@ -33,6 +33,9 @@ export default function ConfirmDelete({
           break;
         case "doctor":
           await deleteDoctor(id);
+          break;
+           case "patient":
+          await deletePatient(id);
           break;
         default:
           break;

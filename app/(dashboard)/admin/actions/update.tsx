@@ -140,3 +140,42 @@ export async function updateDoctorAction(slugOrId: string, formData: FormData) {
   redirect("/admin/doctors");
 }
 
+export async function updatePatientAction(
+  oldSlug: string,
+  formData: FormData
+) {const name = String(formData.get("name") ?? "").trim();
+const slug = String(formData.get("slug") ?? "").trim();
+const email = String(formData.get("email") ?? "").trim();
+const phone = String(formData.get("phone") ?? "").trim();
+const gender = String(formData.get("gender") ?? "").trim();
+const dateOfBirth = String(formData.get("dateOfBirth") ?? "").trim();
+const address = String(formData.get("address") ?? "").trim();
+
+
+  
+
+ if (!name) throw new Error("Name is required.");
+if (!slug) throw new Error("Slug is required.");
+if (!email) throw new Error("Email is required.");
+if (!phone) throw new Error("Phone number is required.");
+if (!gender) throw new Error("Gender is required.");
+if (!dateOfBirth) throw new Error("Date of birth is required.");
+if (!address) throw new Error("Address is required.");
+ 
+await prisma.patient.update({
+  where: { slug: oldSlug },
+  data: {
+    name,
+    slug,
+    email,
+    phone,
+    gender,
+    dateOfBirth: new Date(dateOfBirth), // convert string to Date
+    address,
+  },
+});
+  revalidatePath("/admin/patients");
+  revalidatePath(`/admin/patients/${slug}`);
+//   revalidatePath("/");
+  redirect("/admin/patients");
+}
