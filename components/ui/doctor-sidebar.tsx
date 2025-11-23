@@ -39,11 +39,11 @@ export default function AdminSidebar({
       icon: Users,
       href: `${basePath}/patients`,
     },
-    {
-      name: "Appointments",
-      icon: Users,
-      href: `${basePath}/appointments`,
-    },
+    // {
+    //   name: "Appointments",
+    //   icon: Users,
+    //   href: `${basePath}/appointments`,
+    // },
     {
       name: "Departments",
       icon: Users,

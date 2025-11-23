@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use server"
+"use server";
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { DepartmentFormData } from "../departments/new/page";
 import { DoctorFormData } from "../doctors/new/page";
-
+import { PatientFormData } from "../patients/new/page";
 
 /**
  * Creates a new category with the provided form data
@@ -24,21 +24,13 @@ export async function createDepartment(formData: DepartmentFormData) {
   revalidatePath("/dashboard/admin/departments");
 }
 
-
 /**
  * Creates a new category with the provided form data
- * @param formData 
+ * @param formData
  * @returns Promise<void>
  */
 export async function createDoctor(formData: DoctorFormData) {
-  const {
-    name,
-    slug,
-    image,
-    phone,
-    email,
-    departmentId,
-  } = formData;
+  const { name, slug, image, phone, email, departmentId } = formData;
 
   try {
     await prisma.doctor.create({
@@ -57,4 +49,25 @@ export async function createDoctor(formData: DoctorFormData) {
   }
 
   revalidatePath("/admin/doctors");
+}
+
+/**
+ * Creates a new patient with the provided form data
+ * @param formData - The data for the new announcement containing title, slug, date, image, description, and details
+ * @returns Promise<void>
+ */
+export async function createPatient(formData: PatientFormData) {
+  const { name, slug, email, phone, gender, dateOfBirth, address } = formData;
+  await prisma.patient.create({
+    data: {
+      name,
+      slug,
+      email,
+      phone,
+      gender,
+      dateOfBirth: new Date(dateOfBirth),
+      address,
+    },
+  });
+  revalidatePath("/dashboard/admin/patients");
 }

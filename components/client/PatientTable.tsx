@@ -63,11 +63,7 @@ export default function PatientTableClient({ patients }: Props) {
             <TableCell>{patient.gender}</TableCell>
             <TableCell>{patient.dateOfBirth.toDateString()}</TableCell>
             <TableCell className="text-right space-x-2">
-              <Button size="sm" variant="ghost">
-                <Eye className="h-4 w-4 text-blue-500" />
-              </Button>
-
-              <Link href={`/for-patient/edit-patients/${patient.slug}`}>
+              <Link href={`/admin/patients/${patient.slug}/edit`}>
                 <Button size="sm" variant="ghost">
                   <Edit className="h-4 w-4 text-green-500" />
                 </Button>

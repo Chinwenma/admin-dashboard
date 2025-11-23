@@ -11,7 +11,7 @@ import {
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Eye, Pencil} from "lucide-react";
+import { Eye, Pencil } from "lucide-react";
 import Image from "next/image";
 import ConfirmDelete from "./ConfirmDelete";
 
@@ -78,14 +78,13 @@ export default function DoctorTable({ doctors }: { doctors: Doctor[] }) {
                       <Pencil className="h-4 w-4 text-green-600" />
                     </Button>
                   </Link>
- <ConfirmDelete
-                  title="Delete docor"
-                  message={`This will permanently delete “${doctor}.name}.`}
-                  busyText="Deleting..."
-                  id={doctor.slug}
-                  module="doctor"
-                ></ConfirmDelete>
-                 
+                  <ConfirmDelete
+                    title="Delete docor"
+                    message={`This will permanently delete ${doctor}.name}.`}
+                    busyText="Deleting..."
+                    id={doctor.slug}
+                    module="doctor"
+                  ></ConfirmDelete>
                 </TableCell>
               </TableRow>
             ))}
