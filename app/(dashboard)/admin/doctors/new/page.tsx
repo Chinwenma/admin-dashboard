@@ -45,7 +45,7 @@ export default function AddNewDoctorPage() {
     image: "",
   });
   const [departments, setDepartments] = useState<Department[]>([]);
-  const [loadingDepartments, setLoadingDepartmnets] = useState(true);
+  const [loadingDepartments, setLoadingDepartments] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isImageUploading, setIsImageUploading] = useState(false);
 
@@ -61,7 +61,7 @@ export default function AddNewDoctorPage() {
       } catch (error) {
         toast.error("failed to load departments");
       } finally {
-        setLoadingDepartmnets(false);
+        setLoadingDepartments(false);
       }
     }
     fetchDepartments();

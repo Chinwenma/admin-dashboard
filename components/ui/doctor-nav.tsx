@@ -8,19 +8,18 @@ export default function UserNav() {
   const pathname = usePathname();
 
   const navItems = [
-    { name: "Dashboard", href: "/dashboard/dashboard", icon: LayoutGrid },
-    { name: "Doctors", href: "/dashboard/doctors", icon: UserPlus },
-    { name: "Patients", href: "/dashboard/patients", icon: Users },
-    { name: "Departments", href: "/dashboard/appointments", icon: Calendar },
-    { name: "Appointments", href: "/dashboard/appointments", icon: Calendar },
-    { name: "Settings", href: "/dashboard/appointments", icon: Calendar },
+    { name: "Dashboard", href: "/admin", icon: LayoutGrid },
+    { name: "Doctors", href: "/admin/doctors", icon: UserPlus },
+    { name: "Patients", href: "/admin/patients", icon: Users },
+    { name: "Departments", href: "/admin/departments", icon: Calendar },
+    // { name: "Appointments", href: "/admin/appointments", icon: Calendar },
   ];
 
   const isActive = (href: string) =>
     pathname === href || pathname?.startsWith(`${href}/`);
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 grid grid-cols-3 gap-2 bg-white dark:bg-black py-3 rounded-t-3xl border-t border-gray-300 dark:border-gray-800 shadow-[0_-4px_20px_-2px_rgba(0,0,0,0.3)] lg:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 grid grid-cols-4 gap-2 bg-white dark:bg-black py-3 rounded-t-3xl border-t border-gray-300 dark:border-gray-800 shadow-[0_-4px_20px_-2px_rgba(0,0,0,0.3)] lg:hidden">
       {navItems.map(({ name, href, icon: Icon }) => {
         const active = isActive(href);
         return (
