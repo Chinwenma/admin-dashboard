@@ -72,8 +72,8 @@ import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 async function main() {
-  const email = "admin@hospital.com"; // your admin email
-  const plainPassword = "Admin123!";  // choose a strong password
+  const email = "admin@hospital.com";
+  const plainPassword = "Admin123!"; 
 
   // Hash the password
   const hashedPassword = await bcrypt.hash(plainPassword, 10);
